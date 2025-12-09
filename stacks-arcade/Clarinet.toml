@@ -1,0 +1,63 @@
+[project]
+name = 'stacks-arcade'
+description = ''
+authors = []
+telemetry = true
+cache_dir = './.cache'
+requirements = []
+[contracts.coin-flip]
+path = 'contracts/coin-flip.clar'
+clarity_version = 3
+epoch = '3.2'
+
+[contracts.emoji-battle]
+path = 'contracts/emoji-battle.clar'
+clarity_version = 3
+epoch = '3.2'
+
+[contracts.guess-the-number]
+path = 'contracts/guess-the-number.clar'
+clarity_version = 3
+epoch = '3.2'
+
+[contracts.hot-potato]
+path = 'contracts/hot-potato.clar'
+clarity_version = 3
+epoch = '3.2'
+
+[contracts.lottery-demo]
+path = 'contracts/lottery-demo.clar'
+clarity_version = 3
+epoch = '3.2'
+
+[contracts.rock-paper-scissors]
+path = 'contracts/rock-paper-scissors.clar'
+clarity_version = 3
+epoch = '3.2'
+
+[contracts.scoreboard]
+path = 'contracts/scoreboard.clar'
+clarity_version = 3
+epoch = '3.2'
+
+[contracts.tic-tac-toe]
+path = 'contracts/tic-tac-toe.clar'
+clarity_version = 3
+epoch = '3.2'
+
+[contracts.todo-list]
+path = 'contracts/todo-list.clar'
+clarity_version = 3
+epoch = 'latest'
+[repl.analysis]
+passes = ['check_checker']
+
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
+
+[repl.remote_data]
+enabled = false
+api_url = 'https://api.hiro.so'
