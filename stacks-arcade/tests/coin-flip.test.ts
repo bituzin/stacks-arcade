@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 
 const accounts = simnet.getAccounts();
 const address1 = accounts.get("wallet_1")!;
+const address2 = accounts.get("wallet_2")!;
 
 /*
   The test below is an example. To learn more, read the testing documentation here:
