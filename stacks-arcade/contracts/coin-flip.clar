@@ -144,6 +144,8 @@
       (amount (default-to u0 (get amount (map-get? balances {player: tx-sender}))))
     )
     (asserts! (> amount u0) err-zero-claim)
+    (unwrap! (stx-transfer? amount (as-contract tx-sender) tx-sender) err-transfer-failed)
+    (map-set balances {player: tx-sender} {amount: u0})
     (ok true)))
 
 ;; read only functions
