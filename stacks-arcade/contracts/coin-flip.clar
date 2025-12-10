@@ -79,6 +79,7 @@
           })
         )
         (begin
+          (print {event: "create", id: game-id, player: tx-sender, wager: wager, pick: pick})
           (map-set games {id: game-id} game)
           (var-set next-game-id (+ game-id u1))
           (ok game-id))))))
