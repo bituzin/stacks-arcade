@@ -94,7 +94,9 @@
           (contract-principal (as-contract tx-sender))
           (wager (get wager game))
         )
-        (ok true)))
+        (begin
+          (unwrap! (stx-transfer? wager tx-sender contract-principal) err-transfer-failed)
+          (ok true))))
     err-not-found))
 
 ;; read only functions
