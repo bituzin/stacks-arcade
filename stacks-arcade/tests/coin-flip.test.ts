@@ -4,6 +4,8 @@ import { describe, expect, it } from "vitest";
 const accounts = simnet.getAccounts();
 const address1 = accounts.get("wallet_1")!;
 const address2 = accounts.get("wallet_2")!;
+const create = (wager: bigint, pick: bigint, sender = address1) =>
+  simnet.callPublicFn("coin-flip", "create-game", [simnet.uint(wager), simnet.uint(pick)], sender);
 
 /*
   The test below is an example. To learn more, read the testing documentation here:
