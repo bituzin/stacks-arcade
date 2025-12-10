@@ -18,12 +18,7 @@ describe("coin-flip", () => {
   });
 
   it("creates a game with valid wager and pick", () => {
-    const { result } = simnet.callPublicFn(
-      "coin-flip",
-      "create-game",
-      [simnet.uint(1_000_000n), simnet.uint(0)],
-      address1
-    );
+    const { result } = create(1_000_000n, 0n);
     expect(result).toBeOk(simnet.uint(0n));
   });
 
