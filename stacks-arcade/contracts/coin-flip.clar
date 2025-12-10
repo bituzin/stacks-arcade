@@ -129,6 +129,9 @@
             (updated (merge game {status: status-settled, result: (some result), winner: winner}))
           )
           (map-set games {id: game-id} updated)
+          (if (> payout u0)
+            (ok true)
+            (ok true))
           (ok {result: result, winner: winner}))))
     err-not-found))
 
