@@ -63,3 +63,5 @@
 
 ;; private functions
 ;;
+(define-private (is-open? (status uint))
+  (is-eq status status-open))
