@@ -115,6 +115,7 @@
     (begin
       (asserts! (is-open? (get status game)) err-not-open)
       (asserts! (get funded game) err-not-funded)
+      (asserts! (is-eq tx-sender (get player game)) err-not-player)
       (ok true))
     err-not-found))
 
