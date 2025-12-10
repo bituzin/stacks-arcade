@@ -116,7 +116,12 @@
       (asserts! (is-open? (get status game)) err-not-open)
       (asserts! (get funded game) err-not-funded)
       (asserts! (is-eq tx-sender (get player game)) err-not-player)
-      (ok true))
+      (let
+        (
+          (result (mod (block-height) u2))
+          (winner (is-eq result (get pick game)))
+        )
+        (ok {result: result, winner: winner})))
     err-not-found))
 
 ;; read only functions
