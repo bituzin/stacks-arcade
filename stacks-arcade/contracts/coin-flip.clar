@@ -13,6 +13,9 @@
 ;;
 (define-constant contract-version "0.0.1")
 (define-constant contract-admin none) ;; reserved for future controls
+(define-constant min-bet u1000000) ;; 0.01 STX assuming microstacks
+(define-constant max-bet u100000000) ;; 1 STX cap
+(define-constant fee-bps u0) ;; no fee yet
 
 ;; data vars
 ;;
