@@ -120,6 +120,8 @@
         (
           (result (mod (block-height) u2))
           (winner (is-eq result (get pick game)))
+          (player (get player game))
+          (wager (get wager game))
         )
         (ok {result: result, winner: winner})))
     err-not-found))
