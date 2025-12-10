@@ -148,6 +148,16 @@ describe("coin-flip", () => {
     expect(postClaim.result).toBeUint(0n);
   });
 
+  it("cannot fund after flip resolves", () => {
+    const startHeight = BigInt(simnet.blockHeight);
+    const winningPick = (startHeight + 3n) % 2n;
+    create(1_000_000n, winningPick);
+    fund(0n);
+    flip(0n);
+    const { result } = fund(0n);
+    expect(result).toBeErr();
+  });
+
   it("rejects zero claims", () => {
     const { result } = claim();
     expect(result).toBeErr();
