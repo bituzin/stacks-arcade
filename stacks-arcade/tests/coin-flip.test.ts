@@ -23,12 +23,7 @@ describe("coin-flip", () => {
   });
 
   it("rejects wagers below minimum", () => {
-    const { result } = simnet.callPublicFn(
-      "coin-flip",
-      "create-game",
-      [simnet.uint(999_999n), simnet.uint(1)],
-      address1
-    );
+    const { result } = create(999_999n, 1n);
     expect(result).toBeErr();
   });
 
