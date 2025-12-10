@@ -62,6 +62,14 @@ describe("coin-flip", () => {
     expect(fund(0n).result).toBeErr();
   });
 
+  it("cancels before funding", () => {
+    create(1_000_000n, 0n);
+    const { result } = simnet.callPublicFn("coin-flip", "cancel-game", [simnet.uint(0)], address1);
+    expect(result).toBeOk();
+    const { result: postFund } = fund(0n);
+    expect(postFund).toBeErr();
+  });
+
   // it("shows an example", () => {
   //   const { result } = simnet.callReadOnlyFn("counter", "get-counter", [], address1);
   //   expect(result).toBeUint(0);
