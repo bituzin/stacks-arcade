@@ -123,7 +123,12 @@
           (player (get player game))
           (wager (get wager game))
         )
-        (ok {result: result, winner: winner})))
+        (let
+          (
+            (payout (if winner (* wager u2) u0))
+            (updated (merge game {status: status-settled, result: (some result), winner: winner}))
+          )
+          (ok {result: result, winner: winner}))))
     err-not-found))
 
 ;; read only functions
