@@ -60,6 +60,8 @@
 
 ;; read only functions
 ;;
+(define-read-only (get-next-game-id)
+  (var-get next-game-id))
 
 ;; private functions
 ;;
