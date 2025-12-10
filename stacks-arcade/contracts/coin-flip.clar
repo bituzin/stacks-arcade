@@ -105,7 +105,7 @@
   (match (map-get? games {id: game-id})
     game
     (begin
-      (asserts! (is-eq tx-sender (get player game)) err-not-player)
+      (assert-player (get player game))
       (asserts! (is-open? (get status game)) err-not-open)
       (asserts! (not (get funded game)) err-already-funded)
       (print {event: "cancel", id: game-id, player: tx-sender})
