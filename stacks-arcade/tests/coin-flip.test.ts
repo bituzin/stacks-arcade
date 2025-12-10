@@ -54,6 +54,12 @@ describe("coin-flip", () => {
     expect(result).toBeErr();
   });
 
+  it("does not allow double funding", () => {
+    create(1_000_000n, 0n);
+    expect(fund(0n).result).toBeOk();
+    expect(fund(0n).result).toBeErr();
+  });
+
   // it("shows an example", () => {
   //   const { result } = simnet.callReadOnlyFn("counter", "get-counter", [], address1);
   //   expect(result).toBeUint(0);
