@@ -1,4 +1,3 @@
-tests/coin-flip.test.ts
 // Import Clarity types and utilities for contract interactions
 import { Cl, ClarityType, SomeCV, TupleCV, UIntCV } from "@stacks/transactions";
 // Import vitest testing utilities
