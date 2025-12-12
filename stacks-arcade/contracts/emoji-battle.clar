@@ -151,3 +151,16 @@
             (print {event: "settle", id: game-id, creator: (get creator game), challenger: tx-sender, result: result, winner: winner, winner-ascii: (winner->ascii winner), payout: (if (is-none winner) stake (* stake u2))})
             (ok {result: result, winner: winner})))))))
 
+(define-public (cancel-game (game-id uint))
+  (match (map-get? games {id: game-id})
+    game
+    (begin
+      (asserts! (is-open? (get status game)) err-not-open)
+      (asserts! (is-none (get challenger game)) err-already-joined)
+      (unwrap! (assert-creator (get creator game)) err-not-creator)
+      (credit (get creator game) (get stake game))
+      (map-set games {id: game-id} (merge game {status: status-canceled, result: "canceled"}))
+      (print {event: "cancel", id: game-id, creator: tx-sender})
+      (ok true))
+    err-not-found))
+
