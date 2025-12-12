@@ -164,3 +164,12 @@
       (ok true))
     err-not-found))
 
+(define-public (claim)
+  (let ((amount (default-to u0 (get amount (map-get? balances {player: tx-sender})))))
+    (asserts! (> amount u0) err-zero-claim)
+    (let ((recipient tx-sender))
+      (unwrap! (as-contract? ((with-stx amount)) (try! (stx-transfer? amount tx-sender recipient))) err-transfer)
+      (map-set balances {player: tx-sender} {amount: u0})
+      (print {event: "claim", player: recipient, amount: amount})
+      (ok true))))
+
