@@ -132,6 +132,11 @@ describe("emoji-battle", () => {
     expect(challengerBalance.result).toBeUint(stake);
   });
 
+  it("rejects a claim when balance is zero", () => {
+    const claim = simnet.callPublicFn(contractName, "claim", [], wallet2);
+    expect(claim.result).toBeErr(Cl.uint(408));
+  });
+
   it("allows creator to cancel before a challenger joins and claim refund", () => {
     const gameId = createGame(wallet1, "leaf");
     const cancel = simnet.callPublicFn(
