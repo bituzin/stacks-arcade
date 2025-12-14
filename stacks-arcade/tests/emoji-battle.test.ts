@@ -39,6 +39,17 @@ describe("emoji-battle", () => {
     expect(res.result).toBeErr(Cl.uint(400));
   });
 
+  it("rejects invalid emoji on join", () => {
+    const gameId = createGame(wallet1, "fire");
+    const res = simnet.callPublicFn(
+      contractName,
+      "join-game",
+      [Cl.uint(gameId), Cl.stringAscii("invalid")],
+      wallet2,
+    );
+    expect(res.result).toBeErr(Cl.uint(400));
+  });
+
   it("settles a battle with a clear winner", () => {
     // fire beats leaf
     const gameId = createGame(wallet1, "fire");
