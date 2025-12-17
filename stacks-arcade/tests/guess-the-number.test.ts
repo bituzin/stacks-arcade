@@ -74,3 +74,17 @@ const playUntilWin = (wager: bigint, maxAttempts = 20) => {
   }
   throw new Error("Could not find a winning draw within attempts");
 };
+
+describe("guess-the-number", () => {
+  it("rejects out-of-range guesses", () => {
+    const res = simnet.callPublicFn(
+      contractName,
+      "play",
+      [Cl.uint(minBet), Cl.uint(maxNumber + 1)],
+      player
+    );
+    expect(res.result).toBeErr(Cl.uint(400));
+  });
+}
+
+)
