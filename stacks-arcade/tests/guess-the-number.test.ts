@@ -27,3 +27,14 @@ const getGame = (id: number) => {
   expect(entry).toHaveClarityType(ClarityType.OptionalSome);
   return (entry as SomeCV<TupleCV>).value;
 };
+
+const getBalance = (addr: string) => {
+  const res = simnet.callReadOnlyFn(
+    contractName,
+    "get-balance",
+    [Cl.principal(addr)],
+    addr
+  );
+  expect(res.result.type).toBe(ClarityType.UInt);
+  return (res.result as UIntCV).value;
+};
