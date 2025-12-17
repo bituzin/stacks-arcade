@@ -17,3 +17,13 @@ const nextGameId = () => {
   expect(res.result.type).toBe(ClarityType.UInt);
   return Number((res.result as UIntCV).value);
 };
+
+const getGame = (id: number) => {
+  const entry = simnet.getMapEntry(
+    contractName,
+    "games",
+    Cl.tuple({ id: Cl.uint(id) })
+  );
+  expect(entry).toHaveClarityType(ClarityType.OptionalSome);
+  return (entry as SomeCV<TupleCV>).value;
+};
