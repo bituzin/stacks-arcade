@@ -1,21 +1,9 @@
-
+import { Cl, ClarityType, SomeCV, TupleCV, UIntCV } from
+"@stacks/transactions";
 import { describe, expect, it } from "vitest";
-
+const contractName = "guess-the-number";
 const accounts = simnet.getAccounts();
-const address1 = accounts.get("wallet_1")!;
-
-/*
-  The test below is an example. To learn more, read the testing documentation here:
-  https://docs.hiro.so/stacks/clarinet-js-sdk
-*/
-
-describe("example tests", () => {
-  it("ensures simnet is well initialised", () => {
-    expect(simnet.blockHeight).toBeDefined();
-  });
-
-  // it("shows an example", () => {
-  //   const { result } = simnet.callReadOnlyFn("counter", "get-counter", [], address1);
-  //   expect(result).toBeUint(0);
-  // });
-});
+const player = accounts.get("wallet_1")!;
+const minBet = 1_000_000n;
+const maxBet = 100_000_000n;
+const maxNumber = 9;
