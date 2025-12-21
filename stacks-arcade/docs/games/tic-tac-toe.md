@@ -27,3 +27,4 @@ Two-player wagered tic-tac-toe. Contract is a stub; this doc outlines intended g
 ## Notes
 - Enforce a max move count of 9 to prevent overflow; settle as draw when moves == 9.
 - Consider inactivity timeout to allow reclaim if opponent stops playing.
+- Normalize cell input as 0-8 to keep frontends simple; add guardrails for duplicate moves.
