@@ -13,11 +13,21 @@ Playground of Stacks smart-contract mini-games with a matching Next.js frontend 
    - `cd stacks-arcade && npm install`
    - `cd frontend && npm install`
 2. Run contract tests from `stacks-arcade/`:
-   - `npm test` for unit tests
+   - `npm test` for unit tests (Vitest + clarinet simnet env)
    - `npm run test:report` for coverage and cost output
+   - `npm run test:watch` to re-run on contract/test changes (uses chokidar)
 3. Run the frontend from `frontend/`:
    - `npm run dev` then open `http://localhost:3000`
+4. Optional: Clarinet CLI
+   - `clarinet check` to lint contracts
+   - `clarinet console` for quick manual calls
+
+## Prerequisites
+- Node.js 18+ (tested) and npm.
+- Clarinet CLI if you want local REPL/inspection (not required for Vitest runs).
+- Git for branching and workflow.
 
 ## Notes
 - Node.js 18+ is recommended for both workspaces.
 - Clarinet CLI is optional for extra contract inspection; core tests run via `vitest` with the Clarinet SDK environment.
+- Vitest is configured with `maxWorkers: 1` to avoid simnet contention—keep it when adding tests.
