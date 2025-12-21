@@ -34,3 +34,4 @@ Single-player guessing game. Players stake STX, pick a number between 0-9, and w
 ## Notes
 - Credit-then-claim avoids payout transfers inside game resolution.
 - Adjust `min-bet`/`max-bet` to tune demo exposure. Consider better randomness for production use.
+- `max-workers` is capped to 1 in Vitest config to avoid simnet contention; keep that when adding new tests.
