@@ -5,7 +5,7 @@ Playground of Stacks smart-contract mini-games with a matching Next.js frontend 
 ## Layout
 - `stacks-arcade/` — Clarity contracts for each mini-game plus Vitest suites (`npm test`) and Clarinet config.
 - `frontend/` — Next.js app for the arcade UI (`npm run dev`, `npm run build`).
-- `docs/` — Short gameplay and contract notes (e.g., `docs/games/coin-flip.md`).
+- `docs/` — Short gameplay and contract notes (e.g., `docs/games/coin-flip.md`, `docs/games/emoji-battle.md`).
 - `stacks/` — Stacks knowledge base with a quick index at `stacks/INDEX.md`.
 
 ## Quickstart
