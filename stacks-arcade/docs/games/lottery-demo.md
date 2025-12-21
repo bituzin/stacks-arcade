@@ -31,3 +31,4 @@ Outline for a simple pooled lottery demo. Contract logic is currently empty; thi
 - Use deterministic draw for local testing; document that it is not secure randomness.
 - Consider max entry count to avoid memory blowups.
 - If adding a fee, route to deployer balance with clear print events.
+- Emit the winning ticket index along with winner principal to simplify indexers and UI updates.
