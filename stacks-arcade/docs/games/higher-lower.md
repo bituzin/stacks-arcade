@@ -26,3 +26,4 @@ Placeholder design for a number comparison game where players guess if the next 
 - Flesh out contract constants and helper functions in `contracts/higher-lower.clar`.
 - Replace example Vitest with real scenarios that cover win/loss/tie and claim flows.
 - Add README snippet with CLI calls once flow is finalized.
+- Consider adding a maximum attempts per block to avoid replaying the same draw repeatedly when mining empty blocks locally.
