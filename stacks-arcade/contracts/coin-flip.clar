@@ -57,6 +57,12 @@
   {amount: uint}
 )
 
+;; user game history: {player} -> (list 1000 uint)
+(define-map user-game-history
+  {player: principal}
+  {game-ids: (list 1000 uint)}
+)
+
 ;; public functions
 ;;
 (define-public (create-game (wager uint) (pick uint))
@@ -84,8 +90,19 @@
         (begin
           (print {event: "create", id: game-id, player: tx-sender, wager: wager, pick: pick})
           (map-set games {id: game-id} game)
+          ;; update user-game-history
+          (let (
+            (current (default-to {game-ids: (list)} (map-get? user-game-history {player: tx-sender})))
+            (updated (unwrap-panic (as-max-len? (append (get game-ids current) game-id) u1000)))
+          )
+            (map-set user-game-history {player: tx-sender} {game-ids: updated})
+          )
           (var-set next-game-id (+ game-id u1))
           (ok game-id))))))
+;; read-only: get all game ids for a user
+(define-read-only (get-user-game-ids (player principal))
+  (default-to (list) (get game-ids (map-get? user-game-history {player: player})))
+)
 (define-public (fund-game (game-id uint))
   (match (map-get? games {id: game-id})
     game
